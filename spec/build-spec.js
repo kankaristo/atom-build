@@ -627,7 +627,12 @@ describe('Build', function() {
         expect(output.indexOf('PROJECT_PATH=' + directory.substring(0, -1))).not.toBe(-1);
         expect(output.indexOf('FILE_ACTIVE=' + directory + '.atom-build.json')).not.toBe(-1);
         expect(output.indexOf('FROM_ENV=' + directory + '.atom-build.json')).not.toBe(-1);
-        expect(output.indexOf('FROM_PROCESS_ENV=' + directory + '.atom-build.json')).not.toBe(-1);
+        expect(output.indexOf('NEW_ENV=value1')).not.toBe(-1);
+        expect(output.indexOf('NEW_ENV_2=value1:value2')).not.toBe(-1);
+        expect(output.indexOf('NEW_ENV_3=value1:value1:value2:value3')).not.toBe(-1);
+        expect(output.indexOf('PATH=/added/path:')).not.toBe(-1);
+        expect(output.indexOf('PATH=/added/path:$PATH')).toBe(-1);
+        eexpect(output.indexOf('FROM_PROCESS_ENV=' + directory + '.atom-build.json')).not.toBe(-1);
         expect(output.indexOf('FILE_ACTIVE_NAME=.atom-build.json')).not.toBe(-1);
         expect(output.indexOf('FILE_ACTIVE_NAME_BASE=.atom-build')).not.toBe(-1);
       });
